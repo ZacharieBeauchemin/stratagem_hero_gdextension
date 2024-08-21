@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://djdbxgxp2je6l"]
+
+[ext_resource type="Shader" path="res://shaders/ReplaceColors.gdshader" id="1_ec82i"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_ec82i")
+shader_parameter/color = Color(0, 0, 0, 1)

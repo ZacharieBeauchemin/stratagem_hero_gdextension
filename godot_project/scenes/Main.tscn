@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu2dv637l7stf"]
+
+[ext_resource type="DirectionSequence" uid="uid://bnlkcag0bkefg" path="res://resources/sequences/patriotic_administration_center/anti_material_riffle.tres" id="2_5ps8c"]
+[ext_resource type="DirectionSequence" uid="uid://0wep5qj8ykis" path="res://resources/sequences/patriotic_administration_center/stalwart.tres" id="3_eqiph"]
+[ext_resource type="DirectionSequence" uid="uid://dysydi7we0lmj" path="res://resources/sequences/patriotic_administration_center/machine_gun.tres" id="3_fbptr"]
+
+[node name="Background" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ArrowSequence" type="ArrowSequence" parent="CenterContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="SequenceOrchestrator" type="SequenceOrchestrator" parent="." node_paths=PackedStringArray("arrow_sequence")]
+sequences = Array[DirectionSequence]([ExtResource("2_5ps8c"), ExtResource("3_fbptr"), ExtResource("3_eqiph")])
+arrow_sequence = NodePath("../CenterContainer/ArrowSequence")

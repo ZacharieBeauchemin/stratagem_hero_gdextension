@@ -1,0 +1,4 @@
+[gd_resource type="DirectionSequence" format=3 uid="uid://dysydi7we0lmj"]
+
+[resource]
+sequence = Array[int]([1, 2, 1, 2, 0, 3])

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6w8lx6h6rvsd"]
+
+[ext_resource type="Material" uid="uid://djdbxgxp2je6l" path="res://shader_material/ReplaceColors.tres" id="1_auuk5"]
+[ext_resource type="Texture2D" uid="uid://vhdddgg0wliy" path="res://sprites/Arrow.png" id="2_ubv71"]
+
+[node name="DirectionArrow" type="DirectionArrow"]
+default_color = Color(0.22, 0.24, 0.28, 1)
+correct_color = Color(0.9, 0.86, 0.37, 1)
+error_color = Color(0.96, 0.15, 0.13, 1)
+material = ExtResource("1_auuk5")
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ubv71")
+expand_mode = 3
