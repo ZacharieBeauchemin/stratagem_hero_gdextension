@@ -7,11 +7,7 @@
 #include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/timer.hpp>
-#include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/classes/resource_loader.hpp>
 
 #include "DirectionArrow.hpp"
 

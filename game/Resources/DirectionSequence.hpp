@@ -9,6 +9,8 @@
 namespace Game {
   class DirectionSequence final : public godot::Resource {
     GDCLASS(DirectionSequence, Resource)
+
+  private:
     godot::TypedArray<int> sequence;
 
   public:

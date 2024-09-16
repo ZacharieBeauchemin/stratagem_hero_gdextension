@@ -4,12 +4,7 @@
 
 #pragma once
 
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/random_number_generator.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/utility_functions.hpp>
 
 #include "ArrowSequence.hpp"
 #include "Resources/DirectionSequence.hpp"

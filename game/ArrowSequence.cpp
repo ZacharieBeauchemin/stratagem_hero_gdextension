@@ -4,6 +4,10 @@
 
 #include "ArrowSequence.hpp"
 
+#include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/classes/input.hpp>
+#include "Helpers/Signal.hpp"
+
 void Game::ArrowSequence::_ready() {
   ADD_SIGNAL(MethodInfo("sequence_completed"));
 
@@ -58,9 +62,7 @@ void Game::ArrowSequence::SetupWrongInputTimer() {
   wrongInputTimer->set_wait_time(0.2);
   wrongInputTimer->set_one_shot(true);
 
-  if (wrongInputTimer->connect("timeout", callable_mp(this, &ResetSequence)) != OK) {
-    ERR_PRINT("Failed to connect timout signal.");
-  }
+  CONNECT_SIGNAL(wrongInputTimer, "timeout", &ResetSequence)
 }
 
 void Game::ArrowSequence::HandleDirectionInput(const Direction direction) {

@@ -4,6 +4,9 @@
 
 #include "SequenceOrchestrator.hpp"
 
+#include "Helpers/Binding.hpp"
+#include "Helpers/Signal.hpp"
+
 void Game::SequenceOrchestrator::_ready() {
   if (arrowSequence == nullptr) {
     ERR_PRINT("ArrowSequence not provided.");
@@ -19,9 +22,7 @@ void Game::SequenceOrchestrator::_ready() {
 
   arrowSequence->InitializeSequence(GetRandomSequence());
 
-  if (arrowSequence->connect("sequence_completed", callable_mp(this, &OnSequenceCompleted)) != OK) {
-    ERR_PRINT("Failed to connect sequence_completed signal.");
-  }
+  CONNECT_SIGNAL(arrowSequence, "sequence_completed", &OnSequenceCompleted);
 }
 
 TypedArray<int> Game::SequenceOrchestrator::GetRandomSequence() {
@@ -43,18 +44,19 @@ void Game::SequenceOrchestrator::OnSequenceCompleted() {
 }
 
 void Game::SequenceOrchestrator::_bind_methods() {
-  ClassDB::bind_method(D_METHOD("set_sequences", "sequences"), &SequenceOrchestrator::SetSequences);
-  ClassDB::bind_method(D_METHOD("get_sequences"), &SequenceOrchestrator::GetSequences);
-  const String sequences_hint =
-      String::num(Variant::OBJECT) + "/" + String::num(PROPERTY_HINT_RESOURCE_TYPE) + ":DirectionSequence";
-  ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "sequences", PROPERTY_HINT_TYPE_STRING, sequences_hint),
-               "set_sequences",
-               "get_sequences");
+  BIND_PROPERTY(
+    Variant::ARRAY,
+    "sequences",
+    GetSequences,
+    SetSequences,
+    PROPERTY_HINT_TYPE_STRING,
+    String::num(Variant::OBJECT) + "/" + String::num(PROPERTY_HINT_RESOURCE_TYPE) + ":DirectionSequence")
 
-  ClassDB::bind_method(D_METHOD("set_arrow_sequence", "arrow_sequence"), &SequenceOrchestrator::SetArrowSequence);
-  ClassDB::bind_method(D_METHOD("get_arrow_sequence"), &SequenceOrchestrator::GetArrowSequence);
-  ADD_PROPERTY(
-    PropertyInfo(Variant::OBJECT, "arrow_sequence", PROPERTY_HINT_NODE_TYPE, "ArrowSequence"),
-    "set_arrow_sequence",
-    "get_arrow_sequence");
+  BIND_PROPERTY(
+    Variant::OBJECT,
+    "arrow_sequence",
+    GetArrowSequence,
+    SetArrowSequence,
+    PROPERTY_HINT_NODE_TYPE,
+    "ArrowSequence")
 }

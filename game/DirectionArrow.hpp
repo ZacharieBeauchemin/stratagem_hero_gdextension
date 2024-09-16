@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
 
 #include "Resources/Direction.hpp"
@@ -14,10 +13,6 @@ namespace Game {
     GDCLASS(DirectionArrow, TextureRect)
 
   private:
-    void LateReady();
-
-    void ChangeColor(const godot::Color& color) const;
-
     Direction direction = Up;
     godot::Color defaultColor;
     godot::Color correctColor;
@@ -44,5 +39,10 @@ namespace Game {
 
   protected:
     static void _bind_methods();
+
+  private:
+    void LateReady();
+
+    void ChangeColor(const godot::Color& color) const;
   };
 }

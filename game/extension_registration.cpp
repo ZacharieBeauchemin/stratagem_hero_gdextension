@@ -2,14 +2,7 @@
 // Created by Zach on 2024-08-17.
 //
 
-#include <gdextension_interface.h>
-#include <godot_cpp/godot.hpp>
-#include <godot_cpp/core/class_db.hpp>
-
-#include "DirectionArrow.hpp"
-#include "ArrowSequence.hpp"
 #include "SequenceOrchestrator.hpp"
-#include "Resources/DirectionSequence.hpp"
 
 using namespace godot;
 
