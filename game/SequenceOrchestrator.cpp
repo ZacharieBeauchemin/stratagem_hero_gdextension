@@ -19,17 +19,16 @@ void Game::SequenceOrchestrator::_ready() {
   }
 
   randomNumberGenerator.instantiate();
-
   arrowSequence->InitializeSequence(GetRandomSequence());
 
   CONNECT_SIGNAL(arrowSequence, "sequence_completed", &OnSequenceCompleted);
 }
 
-TypedArray<int> Game::SequenceOrchestrator::GetRandomSequence() {
+TypedArray<Game::Direction> Game::SequenceOrchestrator::GetRandomSequence() {
   randomNumberGenerator->randomize();
 
   const int index = randomNumberGenerator->randi_range(0, static_cast<int32_t>(sequences.size() - 1));
-  TypedArray<int> sequence = cast_to<DirectionSequence>(sequences[index])->GetSequence();
+  TypedArray<Direction> sequence = cast_to<DirectionSequence>(sequences[index])->GetSequence();
 
   if (sequence.size() == 0) {
     ERR_PRINT("No direction in sequence.");

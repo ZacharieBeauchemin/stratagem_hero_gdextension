@@ -6,16 +6,18 @@
 
 #include <godot_cpp/classes/resource.hpp>
 
+#include "Direction.hpp"
+
 namespace Game {
   class DirectionSequence final : public godot::Resource {
     GDCLASS(DirectionSequence, Resource)
 
   private:
-    godot::TypedArray<int> sequence;
+    godot::TypedArray<Direction> sequence;
 
   public:
-    void SetSequence(const godot::TypedArray<int>& sequence) { this->sequence = sequence; }
-    [[nodiscard]] godot::TypedArray<int> GetSequence() const { return this->sequence; }
+    void SetSequence(const godot::TypedArray<Direction>& sequence) { this->sequence = sequence; }
+    [[nodiscard]] godot::TypedArray<Direction> GetSequence() const { return this->sequence; }
 
   protected:
     static void _bind_methods();

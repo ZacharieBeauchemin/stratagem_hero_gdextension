@@ -27,9 +27,9 @@ namespace Game {
 
     public:
         void _ready() override;
-        void _unhandled_input(const Ref<InputEvent>& input_event) override;
+        void _unhandled_input(const Ref<InputEvent>& inputEvent) override;
 
-        void InitializeSequence(const TypedArray<int>& directions);
+        void InitializeSequence(const TypedArray<Direction>& directions);
         void ClearSequence();
 
     protected:

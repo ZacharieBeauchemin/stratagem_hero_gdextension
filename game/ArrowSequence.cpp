@@ -16,7 +16,7 @@ void Game::ArrowSequence::_ready() {
   directionArrowPackedScene = ResourceLoader::get_singleton()->load("res://objects/DirectionArrow.tscn");
 }
 
-void Game::ArrowSequence::_unhandled_input(const Ref<InputEvent>& input_event) {
+void Game::ArrowSequence::_unhandled_input(const Ref<InputEvent>& inputEvent) {
   if (!canPlay) {
     return;
   }
@@ -32,7 +32,7 @@ void Game::ArrowSequence::_unhandled_input(const Ref<InputEvent>& input_event) {
   }
 }
 
-void Game::ArrowSequence::InitializeSequence(const TypedArray<int>& directions) {
+void Game::ArrowSequence::InitializeSequence(const TypedArray<Direction>& directions) {
   for (int i = 0; i < directions.size(); i++) {
     const Direction direction = static_cast<Direction>(static_cast<int>(directions[i]));
     DirectionArrow* arrow = cast_to<DirectionArrow>(directionArrowPackedScene->instantiate());
@@ -66,29 +66,17 @@ void Game::ArrowSequence::SetupWrongInputTimer() {
 }
 
 void Game::ArrowSequence::HandleDirectionInput(const Direction direction) {
-  String stringDirection;
-
-  switch (direction) {
-    case Up:
-      stringDirection = "Up";
-      break;
-    case Down:
-      stringDirection = "Down";
-      break;
-    case Left:
-      stringDirection = "Left";
-      break;
-    case Right:
-      stringDirection = "Right";
-      break;
-  }
-
-  if (!Input::get_singleton()->is_action_just_pressed(stringDirection)) {
+  if (
+    const String stringDirection = DirectionToString(direction);
+    !Input::get_singleton()->is_action_just_pressed(stringDirection)
+  ) {
     return;
   }
 
-  DirectionArrow* current_arrow = cast_to<DirectionArrow>(arrows[arrowIndex]);
-  if (current_arrow->GetDirection() == direction) {
+  if (
+    const DirectionArrow* currentArrow = cast_to<DirectionArrow>(arrows[arrowIndex]);
+    currentArrow->GetDirection() == direction
+  ) {
     HandleCorrect();
   } else {
     HandleError();

@@ -33,7 +33,7 @@ namespace Game {
         static void _bind_methods();
 
     private:
-        TypedArray<int> GetRandomSequence();
+        TypedArray<Direction> GetRandomSequence();
 
         void OnSequenceCompleted();
     };
