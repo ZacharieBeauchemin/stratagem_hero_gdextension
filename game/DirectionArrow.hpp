@@ -13,7 +13,7 @@ namespace Game {
     GDCLASS(DirectionArrow, TextureRect)
 
   private:
-    Direction direction = Up;
+    Direction direction = Direction::Up;
     godot::Color defaultColor;
     godot::Color correctColor;
     godot::Color errorColor;

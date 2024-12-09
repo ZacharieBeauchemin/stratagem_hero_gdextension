@@ -19,6 +19,8 @@ void Game::DirectionArrow::_ready() {
 }
 
 void Game::DirectionArrow::LateReady() {
+  using enum Direction;
+
   switch (direction) {
     case Down:
       set_flip_v(true);

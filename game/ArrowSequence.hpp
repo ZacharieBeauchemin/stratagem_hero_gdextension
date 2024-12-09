@@ -14,34 +14,34 @@
 using namespace godot;
 
 namespace Game {
-    class ArrowSequence final : public HBoxContainer {
-        GDCLASS(ArrowSequence, HBoxContainer);
+  class ArrowSequence final : public HBoxContainer {
+    GDCLASS(ArrowSequence, HBoxContainer);
 
-    private:
-        TypedArray<DirectionArrow> arrows;
-        int arrowIndex = 0;
-        bool canPlay = false;
+  private:
+    TypedArray<DirectionArrow> arrows;
+    int arrowIndex = 0;
+    bool canPlay = false;
 
-        Ref<PackedScene> directionArrowPackedScene;
-        Timer* wrongInputTimer = nullptr;
+    Ref<PackedScene> directionArrowPackedScene;
+    Timer* wrongInputTimer = nullptr;
 
-    public:
-        void _ready() override;
-        void _unhandled_input(const Ref<InputEvent>& inputEvent) override;
+  public:
+    void _ready() override;
+    void _unhandled_input(const Ref<InputEvent>& inputEvent) override;
 
-        void InitializeSequence(const TypedArray<Direction>& directions);
-        void ClearSequence();
+    void InitializeSequence(const TypedArray<Direction>& directions);
+    void ClearSequence();
 
-    protected:
-        static void _bind_methods();
+  protected:
+    static void _bind_methods();
 
-    private:
-        void SetupWrongInputTimer();
+  private:
+    void SetupWrongInputTimer();
 
-        void HandleDirectionInput(Direction direction);
+    void HandleDirectionInput(Direction direction);
 
-        void HandleCorrect();
-        void HandleError();
-        void ResetSequence();
-    };
+    void HandleCorrect();
+    void HandleError();
+    void ResetSequence();
+  };
 }

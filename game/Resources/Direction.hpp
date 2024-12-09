@@ -5,7 +5,7 @@
 #pragma once
 
 namespace Game {
-	enum Direction {
+	enum class Direction {
 		Up,
 		Down,
 		Left,
@@ -13,6 +13,8 @@ namespace Game {
 	};
 
 	constexpr const char* DirectionToString(const Direction direction) {
+		using enum Direction;
+
 		switch (direction) {
 			case Up: return "Up";
 			case Down: return "Down";
@@ -23,9 +25,29 @@ namespace Game {
 	}
 }
 
-VARIANT_ENUM_CAST(Game::Direction)
-
 namespace godot {
+	// Expanded macro VARIANT_ENUM_CAST(Game::Direction) to support enum class
+	MAKE_ENUM_TYPE_INFO(Game::Direction)
+
+	template<>
+	struct VariantCaster<Game::Direction> {
+		static _FORCE_INLINE_ Game::Direction cast(const Variant& p_variant) {
+			return static_cast<Game::Direction>(p_variant.operator int64_t());
+		}
+	};
+
+	template<>
+	struct PtrToArg<Game::Direction> {
+		_FORCE_INLINE_ static Game::Direction convert(const void* p_ptr) {
+			return static_cast<Game::Direction>(*static_cast<const int64_t*>(p_ptr));
+		}
+
+		typedef int64_t EncodeT;
+		_FORCE_INLINE_ static void encode(Game::Direction p_val, void* p_ptr) {
+			*static_cast<int64_t*>(p_ptr) = static_cast<int64_t>(p_val);
+		}
+	};
+
 	// Expanded macro MAKE_TYPED_ARRAY(Game::Direction, godot::Variant::INT)
 	template<>
 	class TypedArray<Game::Direction> : public Array {
