@@ -1,7 +1,7 @@
 #include <godot_cpp/classes/shader_material.hpp>
 
 #include "DirectionArrow.hpp"
-#include "Helpers/Binding.hpp"
+#include "Helpers/BindProperty.hpp"
 
 using namespace godot;
 
@@ -55,29 +55,9 @@ void Game::DirectionArrow::ChangeColor(const Color& color) const {
 }
 
 void Game::DirectionArrow::_bind_methods() {
-  BIND_PROPERTY(
-    Variant::COLOR,
-    "default_color",
-    &DirectionArrow::GetDefaultColor,
-    &DirectionArrow::SetDefaultColor,
-    PROPERTY_HINT_COLOR_NO_ALPHA,
-    "")
-
-  BIND_PROPERTY(
-    Variant::COLOR,
-    "correct_color",
-    &DirectionArrow::GetCorrectColor,
-    &DirectionArrow::SetCorrectColor,
-    PROPERTY_HINT_COLOR_NO_ALPHA,
-    "")
-
-  BIND_PROPERTY(
-    Variant::COLOR,
-    "error_color",
-    &DirectionArrow::GetErrorColor,
-    &DirectionArrow::SetErrorColor,
-    PROPERTY_HINT_COLOR_NO_ALPHA,
-    "")
+  BIND_COLOR_PROPERTY("default_color", &DirectionArrow::GetDefaultColor, &DirectionArrow::SetDefaultColor)
+  BIND_COLOR_PROPERTY("correct_color", &DirectionArrow::GetCorrectColor, &DirectionArrow::SetCorrectColor)
+  BIND_COLOR_PROPERTY("error_color", &DirectionArrow::GetErrorColor, &DirectionArrow::SetErrorColor)
 
   ClassDB::bind_method(D_METHOD("_late_ready"), &DirectionArrow::LateReady);
 }

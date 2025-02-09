@@ -1,15 +1,13 @@
 #include "DirectionSequence.hpp"
 
-#include "../Helpers/Binding.hpp"
+#include "../Helpers/BindProperty.hpp"
 
 using namespace godot;
 
 void Game::DirectionSequence::_bind_methods() {
-  BIND_PROPERTY(
-    Variant::ARRAY,
+  BIND_ARRAY_PROPERTY(
     "sequence",
     &DirectionSequence::GetSequence,
     &DirectionSequence::SetSequence,
-    PROPERTY_HINT_TYPE_STRING,
     String::num(Variant::INT) + "/" + String::num(PROPERTY_HINT_ENUM) + ":Up,Down,Left,Right")
 }

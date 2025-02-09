@@ -1,6 +1,6 @@
 #include "SequenceOrchestrator.hpp"
 
-#include "Helpers/Binding.hpp"
+#include "Helpers/BindProperty.hpp"
 #include "Helpers/Signal.hpp"
 
 void Game::SequenceOrchestrator::_ready() {
@@ -39,19 +39,15 @@ void Game::SequenceOrchestrator::OnSequenceCompleted() {
 }
 
 void Game::SequenceOrchestrator::_bind_methods() {
-  BIND_PROPERTY(
-    Variant::ARRAY,
+  BIND_ARRAY_PROPERTY(
     "sequences",
     &SequenceOrchestrator::GetSequences,
     &SequenceOrchestrator::SetSequences,
-    PROPERTY_HINT_TYPE_STRING,
     String::num(Variant::OBJECT) + "/" + String::num(PROPERTY_HINT_RESOURCE_TYPE) + ":DirectionSequence")
 
-  BIND_PROPERTY(
-    Variant::OBJECT,
+  BIND_OBJECT_PROPERTY(
     "arrow_sequence",
     &SequenceOrchestrator::GetArrowSequence,
     &SequenceOrchestrator::SetArrowSequence,
-    PROPERTY_HINT_NODE_TYPE,
     "ArrowSequence")
 }
