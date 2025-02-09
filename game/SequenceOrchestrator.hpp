@@ -12,29 +12,29 @@
 using namespace godot;
 
 namespace Game {
-    class SequenceOrchestrator final : public Node {
-        GDCLASS(SequenceOrchestrator, Node);
+  class SequenceOrchestrator final : public Node {
+    GDCLASS(SequenceOrchestrator, Node);
 
-    private:
-        TypedArray<DirectionSequence> sequences;
-        ArrowSequence* arrowSequence = nullptr;
-        Ref<RandomNumberGenerator> randomNumberGenerator = nullptr;
+  private:
+    TypedArray<DirectionSequence> sequences;
+    ArrowSequence* arrowSequence = nullptr;
+    Ref<RandomNumberGenerator> randomNumberGenerator = nullptr;
 
-    public:
-        void _ready() override;
+  public:
+    void _ready() override;
 
-        void SetSequences(const TypedArray<DirectionSequence>& sequences) { this->sequences = sequences; }
-        [[nodiscard]] TypedArray<DirectionSequence> GetSequences() const { return sequences; }
+    void SetSequences(const TypedArray<DirectionSequence>& sequences) { this->sequences = sequences; }
+    [[nodiscard]] TypedArray<DirectionSequence> GetSequences() const { return sequences; }
 
-        void SetArrowSequence(ArrowSequence* arrowSequence) { this->arrowSequence = arrowSequence; }
-        [[nodiscard]] ArrowSequence* GetArrowSequence() const { return arrowSequence; }
+    void SetArrowSequence(ArrowSequence* arrowSequence) { this->arrowSequence = arrowSequence; }
+    [[nodiscard]] ArrowSequence* GetArrowSequence() const { return arrowSequence; }
 
-    protected:
-        static void _bind_methods();
+  protected:
+    static void _bind_methods();
 
-    private:
-        TypedArray<Direction> GetRandomSequence();
+  private:
+    TypedArray<Direction> GetRandomSequence();
 
-        void OnSequenceCompleted();
-    };
+    void OnSequenceCompleted();
+  };
 }

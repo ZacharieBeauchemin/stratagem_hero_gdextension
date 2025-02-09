@@ -21,7 +21,7 @@ void Game::SequenceOrchestrator::_ready() {
   randomNumberGenerator.instantiate();
   arrowSequence->InitializeSequence(GetRandomSequence());
 
-  CONNECT_SIGNAL(arrowSequence, "sequence_completed", &OnSequenceCompleted);
+  CONNECT_SIGNAL(arrowSequence, "sequence_completed", &SequenceOrchestrator::OnSequenceCompleted);
 }
 
 TypedArray<Game::Direction> Game::SequenceOrchestrator::GetRandomSequence() {
@@ -46,16 +46,16 @@ void Game::SequenceOrchestrator::_bind_methods() {
   BIND_PROPERTY(
     Variant::ARRAY,
     "sequences",
-    GetSequences,
-    SetSequences,
+    &SequenceOrchestrator::GetSequences,
+    &SequenceOrchestrator::SetSequences,
     PROPERTY_HINT_TYPE_STRING,
     String::num(Variant::OBJECT) + "/" + String::num(PROPERTY_HINT_RESOURCE_TYPE) + ":DirectionSequence")
 
   BIND_PROPERTY(
     Variant::OBJECT,
     "arrow_sequence",
-    GetArrowSequence,
-    SetArrowSequence,
+    &SequenceOrchestrator::GetArrowSequence,
+    &SequenceOrchestrator::SetArrowSequence,
     PROPERTY_HINT_NODE_TYPE,
     "ArrowSequence")
 }

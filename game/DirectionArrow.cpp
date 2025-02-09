@@ -59,9 +59,29 @@ void Game::DirectionArrow::ChangeColor(const Color& color) const {
 }
 
 void Game::DirectionArrow::_bind_methods() {
-  BIND_PROPERTY(Variant::COLOR, "default_color", GetDefaultColor, SetDefaultColor, PROPERTY_HINT_COLOR_NO_ALPHA, "")
-  BIND_PROPERTY(Variant::COLOR, "correct_color", GetCorrectColor, SetCorrectColor, PROPERTY_HINT_COLOR_NO_ALPHA, "")
-  BIND_PROPERTY(Variant::COLOR, "error_color", GetErrorColor, SetErrorColor, PROPERTY_HINT_COLOR_NO_ALPHA, "")
+  BIND_PROPERTY(
+    Variant::COLOR,
+    "default_color",
+    &DirectionArrow::GetDefaultColor,
+    &DirectionArrow::SetDefaultColor,
+    PROPERTY_HINT_COLOR_NO_ALPHA,
+    "")
+
+  BIND_PROPERTY(
+    Variant::COLOR,
+    "correct_color",
+    &DirectionArrow::GetCorrectColor,
+    &DirectionArrow::SetCorrectColor,
+    PROPERTY_HINT_COLOR_NO_ALPHA,
+    "")
+
+  BIND_PROPERTY(
+    Variant::COLOR,
+    "error_color",
+    &DirectionArrow::GetErrorColor,
+    &DirectionArrow::SetErrorColor,
+    PROPERTY_HINT_COLOR_NO_ALPHA,
+    "")
 
   ClassDB::bind_method(D_METHOD("_late_ready"), &DirectionArrow::LateReady);
 }

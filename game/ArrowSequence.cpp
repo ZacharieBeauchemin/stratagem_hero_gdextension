@@ -62,7 +62,7 @@ void Game::ArrowSequence::SetupWrongInputTimer() {
   wrongInputTimer->set_wait_time(0.2);
   wrongInputTimer->set_one_shot(true);
 
-  CONNECT_SIGNAL(wrongInputTimer, "timeout", &ResetSequence)
+  CONNECT_SIGNAL(wrongInputTimer, "timeout", &ArrowSequence::ResetSequence)
 }
 
 void Game::ArrowSequence::HandleDirectionInput(const Direction direction) {
