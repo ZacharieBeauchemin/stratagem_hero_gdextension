@@ -1,7 +1,3 @@
-//
-// Created by Zach on 2024-08-17.
-//
-
 #pragma once
 
 #include <godot_cpp/classes/texture_rect.hpp>

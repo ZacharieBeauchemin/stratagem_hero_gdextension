@@ -1,7 +1,3 @@
-//
-// Created by Zach on 2024-09-15.
-//
-
 #pragma once
 
 #define BIND_PROPERTY(variant_type, property_name, getter_name, setter_name, hint, hint_string)   \

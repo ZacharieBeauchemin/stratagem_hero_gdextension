@@ -1,7 +1,3 @@
-//
-// Created by Zach on 2024-08-17.
-//
-
 #include "DirectionSequence.hpp"
 
 #include "../Helpers/Binding.hpp"

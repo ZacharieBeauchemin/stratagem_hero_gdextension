@@ -1,7 +1,3 @@
-//
-// Created by Zach on 2024-08-17.
-//
-
 #include "ArrowSequence.hpp"
 
 #include <godot_cpp/classes/resource_loader.hpp>
