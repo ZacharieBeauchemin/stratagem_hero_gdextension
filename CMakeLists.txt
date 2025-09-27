@@ -15,18 +15,18 @@ include("cmake/Helpers.cmake")
 include("cmake/GodotHelpers.cmake")
 
 # Download GDExtension
-download_godot_cpp(4.3)
+download_godot_cpp(4.5)
 
 # Setup platform architecture
 set(ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
 if (APPLE)
-    set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "")
-    set(ARCHITECTURE "universal")
+  set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "")
+  set(ARCHITECTURE "universal")
 endif ()
 
 # Setup compiler dependant options
 if (MINGW)
-    set(TARGET_LINK_LIBRARIES_OPTIONS "-static")
+  set(TARGET_LINK_LIBRARIES_OPTIONS "-static")
 endif ()
 
 # Dynamically add all sub directories with a CMakeLists.txt
