@@ -1,8 +1,9 @@
 #include "ArrowSequence.hpp"
 
-#include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/input.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
 #include "Helpers/Signal.hpp"
+#include "Helpers/Variant.h"
 
 void Game::ArrowSequence::_ready() {
   ADD_SIGNAL(MethodInfo("sequence_completed"));
@@ -30,7 +31,7 @@ void Game::ArrowSequence::_unhandled_input(const Ref<InputEvent>& inputEvent) {
 
 void Game::ArrowSequence::InitializeSequence(const TypedArray<Direction>& directions) {
   for (int i = 0; i < directions.size(); i++) {
-    const Direction direction = static_cast<Direction>(static_cast<int>(directions[i]));
+    const Direction direction = getEnumAtIndex(directions, i);
     DirectionArrow* arrow = cast_to<DirectionArrow>(directionArrowPackedScene->instantiate());
     arrow->SetDirection(direction);
     add_child(arrow);
@@ -41,8 +42,8 @@ void Game::ArrowSequence::InitializeSequence(const TypedArray<Direction>& direct
 }
 
 void Game::ArrowSequence::ClearSequence() {
-  for (int i = 0; i < arrows.size(); i++) {
-    DirectionArrow* direction_arrow = cast_to<DirectionArrow>(arrows[i]);
+  for (const Variant& arrow : arrows) {
+    DirectionArrow* direction_arrow = cast_to<DirectionArrow>(arrow);
     remove_child(direction_arrow);
     direction_arrow->queue_free();
   }
@@ -106,4 +107,5 @@ void Game::ArrowSequence::ResetSequence() {
   canPlay = true;
 }
 
-void Game::ArrowSequence::_bind_methods() {}
+void Game::ArrowSequence::_bind_methods() {
+}
